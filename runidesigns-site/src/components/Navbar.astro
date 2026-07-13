@@ -1,0 +1,78 @@
+<header class="site-header">
+  <a class="brand" href="/">Runi Designs</a>
+
+  <nav aria-label="Main navigation">
+    <a href="/portfolio">Work</a>
+    <a href="/#services">Services</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav>
+
+  <a class="quote-button" href="/quote">Request a Quote</a>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 72px;
+    padding: 0 5%;
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
+  .brand {
+    color: #111111;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav a {
+    color: #333333;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: #000000;
+  }
+
+  .quote-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    .site-header {
+      min-height: 64px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .quote-button {
+      padding: 0.6rem 0.9rem;
+    }
+  }
+</style>

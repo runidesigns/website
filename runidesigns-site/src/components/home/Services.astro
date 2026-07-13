@@ -1,0 +1,128 @@
+---
+const services = [
+  {
+    title: "Business Branding",
+    description:
+      "Custom pens, metal business cards, promotional products, and corporate gifts designed to keep your brand memorable.",
+  },
+  {
+    title: "Personalized Gifts",
+    description:
+      "Meaningful engraved keepsakes for weddings, celebrations, anniversaries, and other special moments.",
+  },
+  {
+    title: "Custom Engraving",
+    description:
+      "Precision engraving on metal, wood, leather, glass, acrylic, slate, and other materials.",
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="section-heading">
+    <p class="eyebrow">What we create</p>
+    <h2>Custom work, made with purpose.</h2>
+  </div>
+
+  <div class="service-grid">
+    {
+      services.map((service, index) => (
+        <article class="service-card">
+          <span class="number">0{index + 1}</span>
+          <div>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .services {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8rem 5%;
+  }
+
+  .section-heading {
+    max-width: 850px;
+    margin-bottom: 3.5rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    color: #777;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 340px;
+    padding: 2rem;
+    border-radius: 28px;
+    background: #f5f5f7;
+    transition:
+      transform 180ms ease,
+      background 180ms ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    background: #eeeeef;
+  }
+
+  .number {
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 1.7rem;
+    letter-spacing: -0.03em;
+  }
+
+  .service-card p {
+    margin: 0;
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 850px) {
+    .services {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card {
+      min-height: 260px;
+    }
+  }
+</style>
