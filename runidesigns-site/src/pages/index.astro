@@ -27,9 +27,12 @@ const products = [
   <body>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Runi Designs homepage">
-        <span class="brand-mark">R</span>
-        <span>Runi Designs</span>
-      </a>
+  <span class="brand-mark">
+    <img src="/images/runi-mark.svg" alt="" />
+  </span>
+
+  <span>Runi Designs</span>
+</a>
 
       <nav aria-label="Main navigation">
         <a href="#work">Our Work</a>
@@ -163,17 +166,23 @@ const products = [
   }
 
   .brand-mark {
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgb(255 255 255 / 18%);
-    border-radius: 50%;
-    background: rgb(255 255 255 / 7%);
-    font-family: Georgia, serif;
-    font-size: 17px;
-    backdrop-filter: blur(12px);
-  }
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+.brand-mark img {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
 
   nav {
     display: flex;
