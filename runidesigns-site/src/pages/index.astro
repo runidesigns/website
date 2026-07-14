@@ -6,6 +6,40 @@ const products = [
   "Stone Coasters",
   "Custom Glassware",
 ];
+const showcaseProducts = [
+  {
+    category: "Business Essentials",
+    title: "Metal Business Cards",
+    description:
+      "Premium engraved cards created to make your introduction feel distinctive, polished, and memorable.",
+    image: "/images/products/metal-business-cards.jpg",
+    alt: "Custom engraved metal business cards by Runi Designs",
+  },
+  {
+    category: "Branded Products",
+    title: "Bamboo Pens",
+    description:
+      "Custom engraved bamboo stylus pens designed for businesses, client gifts, events, and everyday promotion.",
+    image: "/images/products/bamboo-pens.jpg",
+    alt: "Custom engraved bamboo pens by Runi Designs",
+  },
+  {
+    category: "Personalized Accessories",
+    title: "Leather Keychains",
+    description:
+      "Personalized leather pieces crafted for gifts, celebrations, businesses, and meaningful everyday details.",
+    image: "/images/products/leather-keychains.jpg",
+    alt: "Personalized engraved leather keychains by Runi Designs",
+  },
+  {
+    category: "Home & Celebrations",
+    title: "Stone Coasters",
+    description:
+      "Custom engraved stone coasters made for homes, weddings, birthdays, special occasions, and branded gifts.",
+    image: "/images/products/stone-coasters.jpg",
+    alt: "Custom engraved stone coasters by Runi Designs",
+  },
+];
 ---
 
 <!doctype html>
@@ -27,12 +61,12 @@ const products = [
   <body>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Runi Designs homepage">
-  <span class="brand-mark">
-    <img src="/images/runi-mark.svg" alt="" />
-  </span>
+        <span class="brand-mark">
+          <img src="/images/runi-mark.svg" alt="" />
+        </span>
 
-  <span>Runi Designs</span>
-</a>
+        <span>Runi Designs</span>
+      </a>
 
       <nav aria-label="Main navigation">
         <a href="#work">Our Work</a>
@@ -107,6 +141,49 @@ const products = [
           }
         </div>
       </section>
+      <section class="showcase" id="services">
+        <div class="showcase-heading">
+    <p class="section-eyebrow">Selected work</p>
+
+    <h2>Designed around your story.</h2>
+
+    <p>
+      From professional branding to meaningful gifts, every piece is
+      personalized with care and made to leave a lasting impression.
+    </p>
+  </div>
+
+  <div class="showcase-list">
+    {
+      showcaseProducts.map((product, index) => (
+        <article
+          class={`showcase-item ${index % 2 === 1 ? "showcase-item-reverse" : ""}`}
+        >
+          <div class="showcase-image">
+            <img
+              src={product.image}
+              alt={product.alt}
+              loading="lazy"
+              width="1200"
+              height="900"
+            />
+          </div>
+
+          <div class="showcase-copy">
+            <p class="product-category">{product.category}</p>
+            <h3>{product.title}</h3>
+            <p class="product-description">{product.description}</p>
+
+            <a href="#quote" class="product-link">
+              Request this product
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
     </main>
 
     <style>
@@ -191,9 +268,9 @@ const products = [
   width: 26px;
   height: 26px;
   object-fit: contain;
-}  ~\
+}
 
- nav {
+  nav {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,21 +298,21 @@ nav a:hover {
 
   .header-button {
     justify-self: end;
-    padding: 11px 18px;
-    border: 1px solid rgb(255 255 255 / 18%);
+    padding: 12px 20px;
+    border: 1px solid rgb(255 255 255 / 16%);
     border-radius: 999px;
-    background: rgb(255 255 255 / 7%);
+    background: #f4f1eb;
+    color: #111111;
     font-size: 12px;
-    font-weight: 600;
-    backdrop-filter: blur(16px);
+    font-weight: 700;
     transition:
-      background 180ms ease,
-      border-color 180ms ease;
+      transform 180ms ease,
+      background 180ms ease;
   }
 
   .header-button:hover {
-    border-color: rgb(255 255 255 / 35%);
-    background: rgb(255 255 255 / 12%);
+    background: #ffffff;
+    transform: translateY(-1px);
   }
 
   .hero {
@@ -511,7 +588,138 @@ nav a:hover {
   animation: display-reveal 1100ms cubic-bezier(0.22, 1, 0.36, 1)
     350ms forwards;
 }
+.showcase {
+  padding: 140px clamp(24px, 7vw, 110px);
+  background:
+    radial-gradient(circle at 10% 20%, rgb(197 167 123 / 8%), transparent 28%),
+    #080808;
+}
 
+.showcase-heading {
+  max-width: 760px;
+  margin: 0 auto 100px;
+  text-align: center;
+}
+
+.section-eyebrow,
+.product-category {
+  color: #c5a77b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.showcase-heading h2 {
+  margin-top: 20px;
+  font-size: clamp(44px, 6vw, 82px);
+  font-weight: 560;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.showcase-heading > p:last-child {
+  max-width: 610px;
+  margin: 28px auto 0;
+  color: rgb(255 255 255 / 55%);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.showcase-list {
+  display: grid;
+  gap: 130px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.showcase-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  align-items: center;
+  gap: clamp(50px, 8vw, 120px);
+}
+
+.showcase-item-reverse .showcase-image {
+  order: 2;
+}
+
+.showcase-item-reverse .showcase-copy {
+  order: 1;
+}
+
+.showcase-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 32px;
+  background: #111111;
+  box-shadow: 0 35px 90px rgb(0 0 0 / 40%);
+}
+
+.showcase-image::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    145deg,
+    rgb(255 255 255 / 8%),
+    transparent 42%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.showcase-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showcase-item:hover .showcase-image img {
+  transform: scale(1.035);
+}
+
+.showcase-copy {
+  max-width: 500px;
+}
+
+.showcase-copy h3 {
+  margin-top: 18px;
+  font-size: clamp(38px, 4.5vw, 68px);
+  font-weight: 560;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.product-description {
+  margin-top: 25px;
+  color: rgb(255 255 255 / 55%);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgb(197 167 123 / 50%);
+  color: #f2eee8;
+  font-size: 14px;
+  font-weight: 650;
+  transition:
+    gap 180ms ease,
+    border-color 180ms ease;
+}
+
+.product-link:hover {
+  gap: 20px;
+  border-color: #c5a77b;
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -539,6 +747,32 @@ nav a:hover {
     .product-display {
       min-height: 500px;
     }
+    .showcase {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.showcase-heading {
+  margin-bottom: 70px;
+}
+
+.showcase-list {
+  gap: 90px;
+}
+
+.showcase-item {
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+
+.showcase-item-reverse .showcase-image,
+.showcase-item-reverse .showcase-copy {
+  order: initial;
+}
+
+.showcase-copy {
+  max-width: 680px;
+}
   }
 
   @media (max-width: 560px) {
@@ -552,24 +786,10 @@ nav a:hover {
       font-size: 14px;
     }
 
-   .header-button {
-  justify-self: end;
-  padding: 12px 20px;
-  border: 1px solid rgb(255 255 255 / 16%);
-  border-radius: 999px;
-  background: #f4f1eb;
-  color: #111111;
-  font-size: 12px;
-  font-weight: 700;
-  transition:
-    transform 180ms ease,
-    background 180ms ease;
-}
-
-.header-button:hover {
-  background: #ffffff;
-  transform: translateY(-1px);
-}
+    .header-button {
+      padding: 10px 14px;
+      font-size: 11px;
+    }
 
     .hero {
       min-height: auto;
@@ -615,8 +835,31 @@ nav a:hover {
     .product-list i {
       display: none;
     }
+    .showcase {
+  padding: 80px 20px;
+}
+
+.showcase-heading {
+  margin-bottom: 60px;
+  text-align: left;
+}
+
+.showcase-heading > p:last-child {
+  margin-left: 0;
+}
+
+.showcase-list {
+  gap: 75px;
+}
+
+.showcase-image {
+  border-radius: 22px;
+}
+
+.showcase-copy h3 {
+  font-size: 42px;
+}
   }
     </style>
   </body>
 </html>
-
