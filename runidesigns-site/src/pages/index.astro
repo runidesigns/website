@@ -266,7 +266,13 @@ const showcaseProducts = [
             </div>
           </div>
 
-          <form class="quote-form">
+          <form
+            class="quote-form"
+            id="quote-form"
+            action="/api/quote"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             <div class="form-row">
               <label>
                 <span>Name</span>
@@ -275,6 +281,7 @@ const showcaseProducts = [
                   name="name"
                   placeholder="Your full name"
                   autocomplete="name"
+                  required
                 />
               </label>
 
@@ -285,6 +292,7 @@ const showcaseProducts = [
                   name="email"
                   placeholder="you@example.com"
                   autocomplete="email"
+                  required
                 />
               </label>
             </div>
@@ -297,12 +305,13 @@ const showcaseProducts = [
                   name="phone"
                   placeholder="Your phone number"
                   autocomplete="tel"
+                  required
                 />
               </label>
 
               <label>
                 <span>Product</span>
-                <select name="product">
+                <select name="product" required>
                   <option value="">Select a product</option>
                   <option>Metal Business Cards</option>
                   <option>Bamboo Pens</option>
@@ -337,6 +346,7 @@ const showcaseProducts = [
                 name="message"
                 rows="6"
                 placeholder="Tell us about your idea, design, occasion, colors, materials, or any other important details."
+                required
               ></textarea>
             </label>
 
@@ -350,10 +360,26 @@ const showcaseProducts = [
               <small>Accepted files: JPG, PNG, PDF or SVG</small>
             </label>
 
-            <button class="quote-submit" type="button">
+            <label class="honeypot" aria-hidden="true">
+              <span>Website</span>
+              <input
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+
+            <button class="quote-submit" type="submit">
               Request My Quote
               <span aria-hidden="true">→</span>
             </button>
+            <p
+              class="form-status"
+              id="form-status"
+              role="status"
+              aria-live="polite"
+            ></p>
 
             <p class="form-note">
               No payment is required. We’ll review your request before
@@ -1203,6 +1229,44 @@ const showcaseProducts = [
         line-height: 1.6;
         text-align: center;
       }
+      .honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.form-status {
+  display: none;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.form-status.is-visible {
+  display: block;
+}
+
+.form-status.is-success {
+  border: 1px solid rgb(116 190 139 / 30%);
+  background: rgb(116 190 139 / 10%);
+  color: #b9e5c6;
+}
+
+.form-status.is-error {
+  border: 1px solid rgb(225 112 112 / 30%);
+  background: rgb(225 112 112 / 10%);
+  color: #f0b8b8;
+}
+
+.quote-submit:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+}
 
       @keyframes fade-up {
         from {
@@ -1488,5 +1552,66 @@ const showcaseProducts = [
         }
       }
     </style>
+    <script>
+  const form = document.querySelector("#quote-form");
+  const status = document.querySelector("#form-status");
+  const submitButton = form?.querySelector(".quote-submit");
+
+  if (
+    form instanceof HTMLFormElement &&
+    status instanceof HTMLElement &&
+    submitButton instanceof HTMLButtonElement
+  ) {
+    const originalButtonContent = submitButton.innerHTML;
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      status.className = "form-status";
+      status.textContent = "";
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting your request…";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+          throw new Error(
+            result.error || "Your quote request could not be submitted.",
+          );
+        }
+
+        status.textContent =
+          result.message ||
+          "Thanks! Your quote request was received.";
+
+        status.className =
+          "form-status is-visible is-success";
+
+        form.reset();
+      } catch (error) {
+        status.textContent =
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.";
+
+        status.className =
+          "form-status is-visible is-error";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonContent;
+      }
+    });
+  }
+</script>
   </body>
 </html>
