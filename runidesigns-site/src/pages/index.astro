@@ -74,6 +74,21 @@ const showcaseProducts = [
         <a href="#about">About</a>
       </nav>
 
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation menu">
+         <span></span>
+         <span></span>
+         <span></span>
+       </summary>
+
+  <div class="mobile-menu-panel">
+    <a href="#work">Our Work</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a class="mobile-quote-link" href="#quote">Request a Quote</a>
+  </div>
+</details>
+
       <a class="header-button" href="#quote">Request a Quote</a>
     </header>
 
@@ -261,7 +276,7 @@ const showcaseProducts = [
     color: inherit;
     text-decoration: none;
   }
-  
+
 #work,
 #services,
 #about {
@@ -862,6 +877,67 @@ nav a:hover {
   font-size: 15px;
   line-height: 1.7;
 }
+
+.mobile-menu {
+  display: none !important;
+}
+
+.mobile-quote-link {
+  display: none;
+}
+
+.mobile-menu summary {
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 6%);
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-menu summary span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.mobile-menu-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  display: grid;
+  width: min(280px, calc(100vw - 32px));
+  padding: 12px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 22px;
+  background: rgb(15 15 15 / 96%);
+  box-shadow: 0 25px 70px rgb(0 0 0 / 55%);
+  backdrop-filter: blur(24px);
+}
+
+.mobile-menu-panel a {
+  padding: 15px 16px;
+  border-radius: 14px;
+  color: rgb(255 255 255 / 72%);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mobile-menu-panel a:hover {
+  color: #ffffff;
+  background: rgb(255 255 255 / 7%);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -897,12 +973,18 @@ nav a:hover {
 }
   
     .site-header {
-      grid-template-columns: 1fr auto;
-    }
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+}
 
     nav {
       display: none;
     }
+
+.mobile-menu {
+  position: relative;
+  display: block !important;
+}
 
     .hero {
       grid-template-columns: 1fr;
@@ -1002,6 +1084,10 @@ nav a:hover {
       padding: 20px;
       border-radius: 17px;
     }
+    
+    .mobile-quote-link {
+  display: block;
+}
 
     .card-main {
       left: 5%;
@@ -1042,6 +1128,15 @@ nav a:hover {
 .showcase-copy h3 {
   font-size: 42px;
 }
+
+.header-button {
+  display: none;
+}
+
+.site-header {
+  grid-template-columns: 1fr auto;
+}
+
   }
     </style>
   </body>
