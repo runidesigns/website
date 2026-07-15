@@ -41,6 +41,8 @@ const showcaseProducts = [
     alt: "Custom engraved stone coasters by Runi Designs",
   },
 ];
+
+const currentYear = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -389,6 +391,58 @@ const showcaseProducts = [
         </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="/" aria-label="Runi Designs homepage">
+        <img
+          src="/images/runi-logo.svg"
+          alt="Runi Designs"
+          width="280"
+          height="100"
+        />
+      </a>
+
+      <p>
+        Custom engraving and personalized products designed to leave a
+        lasting impression.
+      </p>
+
+      <a class="footer-email" href="mailto:runidesigns@outlook.com">
+        runidesigns@outlook.com
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <p class="footer-heading">Explore</p>
+        <a href="#work">Our Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#quote">Request a Quote</a>
+      </div>
+
+      <div>
+        <p class="footer-heading">Products</p>
+        <a href="#services">Metal Business Cards</a>
+        <a href="#services">Bamboo Pens</a>
+        <a href="#services">Leather Keychains</a>
+        <a href="#services">Stone Coasters</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {currentYear} Runi Designs. All rights reserved.</p>
+
+    <a href="#" class="back-to-top">
+      Back to top
+      <span aria-hidden="true">↑</span>
+    </a>
+  </div>
+</footer>
 
     <style>
       :root {
@@ -1322,6 +1376,129 @@ const showcaseProducts = [
           350ms forwards;
       }
 
+      .site-footer {
+  padding: 100px clamp(24px, 7vw, 110px) 30px;
+  border-top: 1px solid rgb(255 255 255 / 9%);
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgb(197 167 123 / 9%),
+      transparent 30%
+    ),
+    #070707;
+}
+
+      .footer-main {
+        display: grid;
+        grid-template-columns: minmax(280px, 1.2fr) minmax(360px, 0.8fr);
+        gap: clamp(60px, 10vw, 150px);
+        max-width: 1320px;
+        margin: 0 auto;
+      }
+
+      .footer-brand {
+        max-width: 520px;
+      }
+
+      .footer-brand img {
+        display: block;
+        width: min(280px, 80%);
+        height: auto;
+        object-fit: contain;
+        object-position: left center;
+      }
+
+      .footer-brand > p {
+        max-width: 470px;
+        margin-top: 30px;
+        color: rgb(255 255 255 / 50%);
+        font-size: 17px;
+        line-height: 1.75;
+      }
+
+      .footer-email {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 30px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid rgb(197 167 123 / 45%);
+        color: #f4f1eb;
+        font-size: 15px;
+        font-weight: 650;
+        transition:
+          gap 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .footer-email:hover {
+        gap: 18px;
+        border-color: #c5a77b;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 50px;
+      }
+
+      .footer-links > div {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-heading {
+        margin-bottom: 10px;
+        color: #c5a77b;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .footer-links a {
+        color: rgb(255 255 255 / 55%);
+        font-size: 14px;
+        transition:
+          color 180ms ease,
+          transform 180ms ease;
+      }
+
+      .footer-links a:hover {
+        color: #ffffff;
+        transform: translateX(3px);
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        max-width: 1320px;
+        margin: 90px auto 0;
+        padding-top: 25px;
+        border-top: 1px solid rgb(255 255 255 / 8%);
+        color: rgb(255 255 255 / 32%);
+        font-size: 12px;
+      }
+
+      .back-to-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: rgb(255 255 255 / 55%);
+        transition:
+          color 180ms ease,
+          transform 180ms ease;
+      }
+
+      .back-to-top:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -1424,6 +1601,18 @@ const showcaseProducts = [
         .quote-intro h2 {
           max-width: 760px;
         }
+
+        .site-footer {
+        padding-top: 80px;
+        }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        max-width: 600px;
+      }
       }
 
       @media (max-width: 560px) {
@@ -1549,6 +1738,20 @@ const showcaseProducts = [
         .quote-form {
           padding: 24px 18px;
           border-radius: 22px;
+        }
+        .site-footer {
+          padding: 70px 20px 25px;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 45px;
+        }
+
+        .footer-bottom {
+          align-items: flex-start;
+          flex-direction: column;
+          margin-top: 65px;
         }
       }
     </style>
