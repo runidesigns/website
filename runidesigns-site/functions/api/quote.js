@@ -207,11 +207,40 @@ export async function onRequest(context) {
         },
       },
     );
+let notificationSent = false;
 
+try {
+  const notificationResponse =
+    await env.QUOTE_NOTIFIER.fetch(
+      "https://runi-quote-notifier.internal/notify",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(quoteRecord),
+      },
+    );
+
+  notificationSent = notificationResponse.ok;
+
+  if (!notificationResponse.ok) {
+    console.error(
+      "Quote email notification failed:",
+      await notificationResponse.text(),
+    );
+  }
+} catch (notificationError) {
+  console.error(
+    "Quote email notification failed:",
+    notificationError,
+  );
+}
     return jsonResponse(
       {
         ok: true,
         quoteId,
+        notificationSent,
         message:
           "Thanks! Your quote request was received. We’ll follow up soon.",
       },
