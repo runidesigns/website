@@ -241,6 +241,95 @@ const currentYear = new Date().getFullYear();
         </div>
       </section>
 
+      <section class="faq-section" id="faq">
+  <div class="faq-heading">
+    <p class="section-eyebrow">Frequently asked questions</p>
+    <h2>Good to know before we begin.</h2>
+
+    <p>
+      Every project is different, but these answers cover the most common
+      questions about custom orders.
+    </p>
+  </div>
+
+  <div class="faq-list">
+    <details>
+      <summary>
+        Is there a minimum order quantity?
+        <span aria-hidden="true">+</span>
+      </summary>
+
+      <p>
+        Minimum quantities vary by product. Smaller orders may be available,
+        while larger quantities usually receive better per-item pricing.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        How long does an order take?
+        <span aria-hidden="true">+</span>
+      </summary>
+
+      <p>
+        Turnaround depends on the product, quantity, artwork, and current
+        schedule. Include your needed-by date in the quote request so we can
+        confirm availability.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        What artwork files can I upload?
+        <span aria-hidden="true">+</span>
+      </summary>
+
+      <p>
+        JPG, PNG, PDF, and SVG files are accepted. Clear, high-resolution
+        artwork or vector files generally produce the best engraving results.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Can you help prepare my design?
+        <span aria-hidden="true">+</span>
+      </summary>
+
+      <p>
+        Yes. We can help arrange your logo, name, wording, or other design
+        elements so they fit the selected product and engraving area.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        How is pricing determined?
+        <span aria-hidden="true">+</span>
+      </summary>
+
+      <p>
+        Pricing depends on the product, quantity, customization, materials,
+        design preparation, and turnaround time. Submit a quote request for
+        project-specific pricing.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Can I request something not shown on the website?
+        <span aria-hidden="true">+</span>
+      </summary>
+
+      <p>
+        Absolutely. Select “Other Custom Product” in the quote form and
+        describe what you have in mind. We’ll review the idea and let you know
+        what is possible.
+      </p>
+    </details>
+  </div>
+</section>
+
       <section class="quote-section" id="quote">
         <div class="quote-layout">
           <div class="quote-intro">
@@ -434,14 +523,18 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 
-  <div class="footer-bottom">
+ <div class="footer-bottom">
+  <div class="footer-legal">
     <p>© {currentYear} Runi Designs. All rights reserved.</p>
-
-    <a href="#" class="back-to-top">
-      Back to top
-      <span aria-hidden="true">↑</span>
-    </a>
+    <a href="/privacy">Privacy Policy</a>
   </div>
+
+  <a href="#" class="back-to-top">
+    Back to top
+    <span aria-hidden="true">↑</span>
+  </a>
+</div>
+
 </footer>
 
     <style>
@@ -1484,6 +1577,21 @@ const currentYear = new Date().getFullYear();
         font-size: 12px;
       }
 
+      .footer-legal {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .footer-legal a {
+        color: rgb(255 255 255 / 45%);
+        transition: color 180ms ease;
+      }
+
+      .footer-legal a:hover {
+        color: #ffffff;
+      }
+
       .back-to-top {
         display: inline-flex;
         align-items: center;
@@ -1497,6 +1605,94 @@ const currentYear = new Date().getFullYear();
       .back-to-top:hover {
         color: #ffffff;
         transform: translateY(-2px);
+      }
+
+      .faq-section {
+        padding: 150px clamp(24px, 7vw, 110px);
+        border-top: 1px solid rgb(255 255 255 / 8%);
+        background:
+          radial-gradient(
+            circle at 80% 20%,
+            rgb(197 167 123 / 9%),
+            transparent 28%
+          ),
+          #0a0a0a;
+      }
+
+      .faq-heading {
+        max-width: 760px;
+        margin: 0 auto 80px;
+        text-align: center;
+      }
+
+      .faq-heading h2 {
+        margin-top: 20px;
+        font-size: clamp(46px, 6vw, 82px);
+        font-weight: 560;
+        line-height: 0.98;
+        letter-spacing: -0.065em;
+      }
+
+      .faq-heading > p:last-child {
+        max-width: 590px;
+        margin: 28px auto 0;
+        color: rgb(255 255 255 / 54%);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .faq-list {
+        max-width: 920px;
+        margin: 0 auto;
+        border-top: 1px solid rgb(255 255 255 / 11%);
+      }
+
+      .faq-list details {
+        border-bottom: 1px solid rgb(255 255 255 / 11%);
+      }
+
+      .faq-list summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 28px 4px;
+        color: rgb(255 255 255 / 86%);
+        font-size: clamp(18px, 2vw, 23px);
+        font-weight: 560;
+        letter-spacing: -0.025em;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .faq-list summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-list summary span {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(255 255 255 / 14%);
+        border-radius: 50%;
+        color: #c5a77b;
+        font-size: 20px;
+        font-weight: 400;
+        transition: transform 220ms ease;
+      }
+
+      .faq-list details[open] summary span {
+        transform: rotate(45deg);
+      }
+
+      .faq-list details > p {
+        max-width: 760px;
+        padding: 0 60px 30px 4px;
+        color: rgb(255 255 255 / 50%);
+        font-size: 16px;
+        line-height: 1.75;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1752,6 +1948,33 @@ const currentYear = new Date().getFullYear();
           align-items: flex-start;
           flex-direction: column;
           margin-top: 65px;
+        }
+        .faq-section {
+          padding: 80px 20px;
+        }
+
+        .faq-heading {
+          margin-bottom: 55px;
+          text-align: left;
+        }
+
+        .faq-heading > p:last-child {
+          margin-left: 0;
+        }
+
+        .faq-list summary {
+          padding: 23px 0;
+        }
+
+        .faq-list details > p {
+          padding-right: 20px;
+          padding-left: 0;
+        }
+
+        .footer-legal {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
         }
       }
     </style>
