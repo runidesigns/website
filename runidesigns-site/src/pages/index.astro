@@ -41,6 +41,7 @@ const showcaseProducts = [
     alt: "Custom engraved stone coasters by Runi Designs",
   },
 ];
+import SiteHeader from "../components/SiteHeader.astro";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -64,37 +65,7 @@ const currentYear = new Date().getFullYear();
   </head>
 
   <body>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Runi Designs homepage">
-        <span class="brand-mark">
-          <img src="/images/runi-mark.svg" alt="" />
-        </span>
-        <span>Runi Designs</span>
-      </a>
-
-      <nav aria-label="Main navigation">
-        <a href="#work">Our Work</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-      </nav>
-
-      <details class="mobile-menu">
-        <summary aria-label="Open navigation menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-
-        <div class="mobile-menu-panel">
-          <a href="#work">Our Work</a>
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a class="mobile-quote-link" href="#quote">Request a Quote</a>
-        </div>
-      </details>
-
-      <a class="header-button" href="#quote">Request a Quote</a>
-    </header>
+    <SiteHeader />
 
     <main>
       <section class="hero">
@@ -514,7 +485,7 @@ const currentYear = new Date().getFullYear();
         <p class="footer-heading">Explore</p>
         <a href="#work">Our Work</a>
         <a href="#services">Services</a>
-        <a href="#about">About</a>
+        <a href="/about">About</a>
         <a href="#quote">Request a Quote</a>
       </div>
 

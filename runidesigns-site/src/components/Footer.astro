@@ -1,90 +1,216 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
 <footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <a class="footer-brand" href="/">Runi Designs</a>
-      <p>Premium custom laser engraving for businesses, gifts, and meaningful moments.</p>
+  <div class="footer-main">
+    <div class="footer-brand-column">
+      <a class="footer-logo" href="/" aria-label="Runi Designs homepage">
+        <img src="/images/runi-logo.svg" alt="Runi Designs" />
+      </a>
+
+      <p>
+        Premium custom engraving and personalized products for businesses,
+        celebrations, gifts, and meaningful moments.
+      </p>
+
+      <a class="footer-email" href="mailto:runidesigns@outlook.com">
+        runidesigns@outlook.com
+      </a>
     </div>
 
-    <div class="footer-links">
-      <a href="/#work">Work</a>
-      <a href="/#services">Services</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+    <div class="footer-navigation">
+      <div class="footer-link-group">
+        <p>Explore</p>
+
+        <a href="/portfolio">Our Work</a>
+        <a href="/#services">Services</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+
+      <div class="footer-link-group">
+        <p>Start a project</p>
+
+        <a href="/#quote">Request a Quote</a>
+        <a href="/#faq">Frequently Asked Questions</a>
+      </div>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <p>© 2026 Runi Designs. All rights reserved.</p>
-    <p>runidesigns.com</p>
+    <div class="footer-legal">
+      <p>© {currentYear} Runi Designs. All rights reserved.</p>
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+
+    <a class="back-to-top" href="#">
+      Back to top
+      <span aria-hidden="true">↑</span>
+    </a>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    padding: 4rem 5% 2rem;
-    background: #111111;
+    padding: 90px clamp(24px, 6vw, 90px) 30px;
+    border-top: 1px solid rgb(255 255 255 / 9%);
+    background: #080808;
     color: #ffffff;
   }
 
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    gap: 4rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .footer-brand {
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .footer-inner p {
-    max-width: 520px;
-    margin-top: 1rem;
-    color: #a7a7a7;
-  }
-
-  .footer-links {
+  .footer-main {
     display: grid;
-    gap: 0.8rem;
+    grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+    gap: clamp(60px, 9vw, 140px);
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-bottom: 70px;
   }
 
-  .footer-links a {
-    color: #ffffff;
+  .footer-brand-column {
+    max-width: 560px;
+  }
+
+  .footer-logo {
+    display: inline-block;
+    width: min(250px, 75%);
+  }
+
+  .footer-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-brand-column p {
+    max-width: 520px;
+    margin: 28px 0 0;
+    color: rgb(255 255 255 / 48%);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .footer-email {
+    display: inline-block;
+    margin-top: 24px;
+    color: #d7b46a;
+    font-size: 14px;
     text-decoration: none;
   }
 
-  .footer-links a:hover {
-    color: #d7b46a;
+  .footer-email:hover {
+    color: #ffffff;
+  }
+
+  .footer-navigation {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    gap: 50px;
+  }
+
+  .footer-link-group {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-link-group p {
+    margin: 0 0 8px;
+    color: rgb(255 255 255 / 30%);
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .footer-link-group a {
+    color: rgb(255 255 255 / 58%);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 180ms ease;
+  }
+
+  .footer-link-group a:hover {
+    color: #ffffff;
   }
 
   .footer-bottom {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 3rem auto 0;
-    padding-top: 1.5rem;
-    border-top: 1px solid #2d2d2d;
-    color: #777777;
-    font-size: 0.85rem;
+    gap: 30px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-top: 28px;
+    border-top: 1px solid rgb(255 255 255 / 9%);
+    color: rgb(255 255 255 / 34%);
+    font-size: 12px;
   }
 
-  @media (max-width: 700px) {
-    .footer-inner,
+  .footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-legal p {
+    margin: 0;
+  }
+
+  .footer-legal a,
+  .back-to-top {
+    color: rgb(255 255 255 / 45%);
+    text-decoration: none;
+    transition: color 180ms ease;
+  }
+
+  .footer-legal a:hover,
+  .back-to-top:hover {
+    color: #ffffff;
+  }
+
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @media (max-width: 850px) {
+    .footer-main {
+      grid-template-columns: 1fr;
+      gap: 55px;
+    }
+
+    .footer-navigation {
+      max-width: 500px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .site-footer {
+      padding: 70px 20px 28px;
+    }
+
+    .footer-main {
+      padding-bottom: 50px;
+    }
+
+    .footer-navigation {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
     .footer-bottom {
+      align-items: flex-start;
       flex-direction: column;
     }
 
-    .footer-inner {
-      gap: 2rem;
-    }
-
-    .footer-bottom {
-      gap: 0.25rem;
+    .footer-legal {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
     }
   }
 </style>

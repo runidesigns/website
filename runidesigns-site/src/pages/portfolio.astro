@@ -6,44 +6,40 @@ const projects = [
     category: "Business Branding",
     title: "Premium Metal Business Cards",
     description:
-      "Durable engraved cards designed to make a strong first impression.",
+      "Durable engraved metal cards designed to make a strong and memorable first impression.",
+    image: "/images/products/metal-business-cards.jpg",
+    alt: "Custom engraved metal business cards by Runi Designs",
   },
   {
     category: "Promotional Products",
     title: "Custom Bamboo Stylus Pens",
     description:
-      "Professional branded pens created for businesses, events, and client gifts.",
-  },
-  {
-    category: "Personalized Gifts",
-    title: "Engraved Glassware",
-    description:
-      "Custom glass pieces made for weddings, celebrations, and keepsakes.",
+      "Professional branded pens created for businesses, events, trade shows, and client gifts.",
+    image: "/images/products/bamboo-pens.jpg",
+    alt: "Custom engraved bamboo stylus pens by Runi Designs",
   },
   {
     category: "Leather Goods",
-    title: "Personalized Leather Accessories",
+    title: "Personalized Leather Keychains",
     description:
-      "Clean, lasting engraving on keychains, sleeves, tags, and other leather pieces.",
+      "Clean, lasting personalization on leather keychains made for gifts, events, and business branding.",
+    image: "/images/products/leather-keychains.jpg",
+    alt: "Personalized engraved leather keychains by Runi Designs",
   },
   {
-    category: "Corporate Gifts",
-    title: "Branded Client Gifts",
+    category: "Personalized Gifts",
+    title: "Custom Stone Coasters",
     description:
-      "Thoughtful products designed to represent a business with care and quality.",
-  },
-  {
-    category: "Special Projects",
-    title: "One-of-a-Kind Engravings",
-    description:
-      "Custom work created around unique materials, ideas, and occasions.",
+      "Engraved stone coasters created for homes, celebrations, gifts, and special occasions.",
+    image: "/images/products/stone-coasters.jpg",
+    alt: "Custom engraved stone coasters by Runi Designs",
   },
 ];
 ---
 
 <MainLayout
-  title="Portfolio"
-  description="Explore custom engraved pens, metal business cards, glassware, leather goods, and personalized gifts."
+  title="Our Work"
+  description="Explore custom engraved metal business cards, bamboo pens, leather keychains, stone coasters, and personalized products by Runi Designs."
 >
   <main>
     <section class="portfolio-hero">
@@ -61,8 +57,12 @@ const projects = [
       {
         projects.map((project, index) => (
           <article class:list={["project-card", index === 0 && "featured-card"]}>
-            <div class="image-placeholder">
-              <span>Project photography coming soon</span>
+            <div class="project-image">
+              <img
+                src={project.image}
+                alt={project.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+              />
             </div>
 
             <div class="project-copy">
@@ -79,7 +79,7 @@ const projects = [
       <p class="eyebrow">Your idea could be next</p>
       <h2>Let’s create something distinctive.</h2>
 
-      <a href="/quote">Request a Quote</a>
+      <a href="/#quote">Request a Quote</a>
     </section>
   </main>
 </MainLayout>
@@ -88,7 +88,7 @@ const projects = [
   .portfolio-hero {
     max-width: 1250px;
     margin: 0 auto;
-    padding: 8rem 5% 6rem;
+    padding: 10rem 5% 6rem;
     text-align: center;
   }
 
@@ -129,6 +129,7 @@ const projects = [
 
   .project-card {
     overflow: hidden;
+    border: 1px solid #ebebeb;
     border-radius: 30px;
     background: #f5f5f7;
   }
@@ -137,20 +138,26 @@ const projects = [
     grid-column: 1 / -1;
   }
 
-  .image-placeholder {
-    display: grid;
-    place-items: center;
-    min-height: 480px;
-    background: linear-gradient(145deg, #ededed, #d9d9d9);
-    color: #888888;
-    text-align: center;
+  .project-image {
+    height: 480px;
+    overflow: hidden;
+    background: #e8e8e8;
   }
 
-  .featured-card .image-placeholder {
-    min-height: 650px;
-    background:
-      radial-gradient(circle at top right, #3a3a3a, #151515 60%);
-    color: #8f8f8f;
+  .featured-card .project-image {
+    height: 650px;
+  }
+
+  .project-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.025);
   }
 
   .project-copy {
@@ -165,6 +172,7 @@ const projects = [
   }
 
   .description {
+    max-width: 680px;
     margin: 1.25rem 0 0;
     color: #666666;
     font-size: 1.05rem;
@@ -206,9 +214,14 @@ const projects = [
 
   .portfolio-cta a:hover {
     background: #e8e8e8;
+    transform: translateY(-1px);
   }
 
   @media (max-width: 800px) {
+    .portfolio-hero {
+      padding-top: 8rem;
+    }
+
     .portfolio-grid {
       grid-template-columns: 1fr;
     }
@@ -217,9 +230,28 @@ const projects = [
       grid-column: auto;
     }
 
-    .image-placeholder,
-    .featured-card .image-placeholder {
-      min-height: 380px;
+    .project-image,
+    .featured-card .project-image {
+      height: 420px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .portfolio-hero {
+      padding: 7.5rem 20px 4.5rem;
+    }
+
+    .portfolio-grid {
+      padding: 1rem 20px 6rem;
+    }
+
+    .project-image,
+    .featured-card .project-image {
+      height: 340px;
+    }
+
+    .project-copy {
+      padding: 1.5rem;
     }
   }
 </style>
