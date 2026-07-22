@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://runidesigns.com/sitemap-index.xml
