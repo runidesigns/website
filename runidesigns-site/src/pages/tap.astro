@@ -1,0 +1,527 @@
+---
+const pageTitle = "Brian Estevez | Runi Designs";
+const pageDescription =
+  "Connect with Brian Estevez, Founder and Designer at Runi Designs, for premium custom engraving, business branding, and personalized products.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="theme-color" content="#090909" />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://runidesigns.com/tap" />
+
+    <link rel="canonical" href="https://runidesigns.com/tap" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body>
+    <main class="tap-page">
+      <div class="ambient-glow glow-one" aria-hidden="true"></div>
+      <div class="ambient-glow glow-two" aria-hidden="true"></div>
+
+      <section class="contact-card" aria-labelledby="contact-name">
+        <div class="brand-row">
+          <a class="brand" href="/" aria-label="Visit the Runi Designs homepage">
+            <span class="brand-mark">
+              <img src="/images/runi-mark.svg" alt="" />
+            </span>
+
+            <span>Runi Designs</span>
+          </a>
+
+          <span class="card-label">NFC Business Card</span>
+        </div>
+
+        <div class="profile">
+          <p class="eyebrow">Premium custom engraving &amp; branding</p>
+          <h1 id="contact-name">Brian Estevez</h1>
+          <p class="role">Founder <span aria-hidden="true">·</span> Designer</p>
+
+          <p class="introduction">
+            I turn names, logos, and meaningful ideas into polished custom
+            products made to leave a lasting impression.
+          </p>
+        </div>
+
+        <div class="primary-actions" aria-label="Main contact actions">
+          <a
+            class="action action-primary"
+            href="/brian-estevez-runi-designs.vcf"
+          >
+            <span>
+              <small>Keep my details handy</small>
+              Save My Contact
+            </span>
+            <span class="action-icon" aria-hidden="true">+</span>
+          </a>
+
+          <a class="action" href="/#quote">
+            <span>
+              <small>Tell me what you have in mind</small>
+              Request a Custom Quote
+            </span>
+            <span class="action-icon" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="action" href="/portfolio">
+            <span>
+              <small>See recent custom products</small>
+              View Our Work
+            </span>
+            <span class="action-icon" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="quick-actions" aria-label="Additional contact actions">
+          <a href="mailto:brian@runidesigns.com">
+            <span class="quick-icon" aria-hidden="true">@</span>
+            <span>
+              <small>Email</small>
+              Brian
+            </span>
+          </a>
+
+          <a href="/">
+            <span class="quick-icon" aria-hidden="true">R</span>
+            <span>
+              <small>Explore</small>
+              Website
+            </span>
+          </a>
+
+          <button type="button" data-share-card>
+            <span class="quick-icon" aria-hidden="true">↗</span>
+            <span>
+              <small>Send</small>
+              <span data-share-label>Share Card</span>
+            </span>
+          </button>
+        </div>
+
+        <footer class="card-footer">
+          <span>Columbus, Ohio</span>
+          <span aria-hidden="true">•</span>
+          <a href="https://runidesigns.com">runidesigns.com</a>
+        </footer>
+      </section>
+    </main>
+
+    <script>
+      const shareButton = document.querySelector("[data-share-card]");
+      const shareLabel = document.querySelector("[data-share-label]");
+
+      const showCopiedState = () => {
+        if (!shareLabel) return;
+
+        shareLabel.textContent = "Link Copied";
+
+        window.setTimeout(() => {
+          shareLabel.textContent = "Share Card";
+        }, 1800);
+      };
+
+      shareButton?.addEventListener("click", async () => {
+        const shareData = {
+          title: "Brian Estevez | Runi Designs",
+          text: "Connect with Brian Estevez at Runi Designs.",
+          url: window.location.href,
+        };
+
+        try {
+          if (navigator.share) {
+            await navigator.share(shareData);
+            return;
+          }
+
+          await navigator.clipboard.writeText(window.location.href);
+          showCopiedState();
+        } catch (error) {
+          if (error instanceof DOMException && error.name === "AbortError") {
+            return;
+          }
+
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            showCopiedState();
+          } catch {
+            window.location.href = `mailto:?subject=${encodeURIComponent(
+              shareData.title,
+            )}&body=${encodeURIComponent(window.location.href)}`;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+      sans-serif;
+    font-synthesis: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-width: 320px;
+    background: #090909;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background:
+      radial-gradient(circle at 50% -10%, rgb(215 180 106 / 14%), transparent 34rem),
+      #090909;
+    color: #ffffff;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  .tap-page {
+    position: relative;
+    display: grid;
+    min-height: 100svh;
+    place-items: center;
+    overflow: hidden;
+    padding: clamp(20px, 4vw, 48px) 16px;
+    isolation: isolate;
+  }
+
+  .ambient-glow {
+    position: fixed;
+    z-index: -1;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .glow-one {
+    top: -12rem;
+    left: -12rem;
+    background: #d7b46a;
+  }
+
+  .glow-two {
+    right: -16rem;
+    bottom: -14rem;
+    background: #8f6b33;
+  }
+
+  .contact-card {
+    width: min(100%, 680px);
+    padding: clamp(22px, 5vw, 46px);
+    border: 1px solid rgb(255 255 255 / 11%);
+    border-radius: clamp(28px, 6vw, 42px);
+    background: linear-gradient(145deg, rgb(24 24 24 / 96%), rgb(13 13 13 / 97%));
+    box-shadow:
+      0 32px 90px rgb(0 0 0 / 48%),
+      inset 0 1px rgb(255 255 255 / 5%);
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 720;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 13%);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 6%);
+  }
+
+  .brand-mark img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+  }
+
+  .card-label {
+    padding: 8px 11px;
+    border: 1px solid rgb(215 180 106 / 22%);
+    border-radius: 999px;
+    color: #c9aa72;
+    font-size: 0.62rem;
+    font-weight: 760;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .profile {
+    padding: clamp(52px, 9vw, 76px) 0 clamp(38px, 7vw, 56px);
+  }
+
+  .eyebrow {
+    margin: 0 0 15px;
+    color: #d7b46a;
+    font-size: 0.68rem;
+    font-weight: 760;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(3rem, 11vw, 5.8rem);
+    line-height: 0.91;
+    letter-spacing: -0.065em;
+  }
+
+  .role {
+    margin: 19px 0 0;
+    color: rgb(255 255 255 / 62%);
+    font-size: clamp(0.92rem, 2.6vw, 1.05rem);
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .role span {
+    margin: 0 0.35em;
+    color: #d7b46a;
+  }
+
+  .introduction {
+    max-width: 570px;
+    margin: 26px 0 0;
+    color: rgb(255 255 255 / 55%);
+    font-size: clamp(0.98rem, 3vw, 1.08rem);
+    line-height: 1.75;
+  }
+
+  .primary-actions {
+    display: grid;
+    gap: 11px;
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 78px;
+    padding: 15px 17px 15px 20px;
+    border: 1px solid rgb(255 255 255 / 9%);
+    border-radius: 20px;
+    background: rgb(255 255 255 / 4%);
+    color: #ffffff;
+    font-size: 0.98rem;
+    font-weight: 720;
+    text-decoration: none;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease,
+      transform 180ms ease;
+  }
+
+  .action small,
+  .quick-actions small {
+    display: block;
+    margin-bottom: 2px;
+    color: rgb(255 255 255 / 38%);
+    font-size: 0.65rem;
+    font-weight: 650;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .action-icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 5%);
+    font-size: 1.1rem;
+  }
+
+  .action-primary {
+    border-color: #f0e2c8;
+    background: #f0e2c8;
+    color: #111111;
+  }
+
+  .action-primary small {
+    color: rgb(17 17 17 / 56%);
+  }
+
+  .action-primary .action-icon {
+    border-color: rgb(17 17 17 / 12%);
+    background: rgb(17 17 17 / 8%);
+  }
+
+  .action:hover,
+  .action:focus-visible {
+    border-color: rgb(215 180 106 / 45%);
+    background: rgb(255 255 255 / 7%);
+    outline: none;
+    transform: translateY(-2px);
+  }
+
+  .action-primary:hover,
+  .action-primary:focus-visible {
+    border-color: #ffffff;
+    background: #ffffff;
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+    margin-top: 11px;
+  }
+
+  .quick-actions a,
+  .quick-actions button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    min-height: 67px;
+    padding: 11px;
+    border: 1px solid rgb(255 255 255 / 8%);
+    border-radius: 17px;
+    background: rgb(255 255 255 / 3%);
+    color: rgb(255 255 255 / 82%);
+    font-size: 0.77rem;
+    font-weight: 680;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease;
+  }
+
+  .quick-actions a:hover,
+  .quick-actions a:focus-visible,
+  .quick-actions button:hover,
+  .quick-actions button:focus-visible {
+    border-color: rgb(215 180 106 / 35%);
+    background: rgb(255 255 255 / 6%);
+    outline: none;
+  }
+
+  .quick-icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgb(215 180 106 / 12%);
+    color: #d7b46a;
+    font-size: 0.78rem;
+    font-weight: 780;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 34px;
+    color: rgb(255 255 255 / 32%);
+    font-size: 0.72rem;
+  }
+
+  .card-footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-footer a:hover,
+  .card-footer a:focus-visible {
+    color: #d7b46a;
+    outline: none;
+  }
+
+  ::selection {
+    background: #d7b46a;
+    color: #111111;
+  }
+
+  @media (max-width: 520px) {
+    .tap-page {
+      align-items: start;
+      padding: 12px;
+    }
+
+    .contact-card {
+      padding: 20px;
+      border-radius: 28px;
+    }
+
+    .card-label {
+      font-size: 0.54rem;
+    }
+
+    .quick-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .quick-actions a,
+    .quick-actions button {
+      min-height: 60px;
+    }
+
+    .card-footer {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

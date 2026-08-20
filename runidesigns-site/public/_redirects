@@ -1,2 +1,4 @@
 /quote /#quote 301
 /quote/ /#quote 301
+/connect /tap 301
+/connect/ /tap 301
