@@ -82,6 +82,32 @@ const pageDescription =
         </div>
 
         <div class="quick-actions" aria-label="Additional contact actions">
+          <a
+            href="https://www.instagram.com/runidesignsllc/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Follow Runi Designs on Instagram"
+          >
+            <span class="quick-icon" aria-hidden="true">IG</span>
+            <span>
+              <small>Follow</small>
+              Instagram
+            </span>
+          </a>
+
+          <a
+            href="https://shoprunidesigns.etsy.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Shop Runi Designs on Etsy"
+          >
+            <span class="quick-icon" aria-hidden="true">E</span>
+            <span>
+              <small>Shop</small>
+              Etsy Store
+            </span>
+          </a>
+
           <a href="mailto:brian@runidesigns.com">
             <span class="quick-icon" aria-hidden="true">@</span>
             <span>
@@ -412,9 +438,13 @@ const pageDescription =
 
   .quick-actions {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 9px;
     margin-top: 11px;
+  }
+
+  .quick-actions button {
+    grid-column: 1 / -1;
   }
 
   .quick-actions a,
